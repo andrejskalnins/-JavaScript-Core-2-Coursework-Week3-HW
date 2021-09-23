@@ -1,12 +1,12 @@
 // Write your code here
 let images = [
-  "https://picsum.photos/600/601",
-  "https://picsum.photos/600/602",
-  "https://picsum.photos/600/603",
-  "https://picsum.photos/600/604",
-  "https://picsum.photos/600/605",
-
-  "https://picsum.photos/600/606",
+  "https://picsum.photos/200/300",
+  "https://picsum.photos/300/300",
+  "https://picsum.photos/400/300",
+  "https://picsum.photos/500/300",
+  "https://picsum.photos/600/300",
+  "https://picsum.photos/700/300",
+  "https://picsum.photos/800/400",
 ];
 
 let activeSlideIndex = 0;
@@ -77,51 +77,34 @@ function getUserTimer() {
 function renderElements() {
   let slideShowContainer = document.querySelector(".slideshow");
   slideShowContainer.replaceChildren();
-  let heading = document.createElement("h1");
   let nextSlideBtn = document.createElement("button");
   let previousSlideBtn = document.createElement("button");
   let nextSlideBtnAuto = document.createElement("button");
   let previousSlideBtnAuto = document.createElement("button");
   let stopAutoSlideBtn = document.createElement("button");
-  let userTimerInput = document.createElement("input");
-  let userTimerLabel = document.createElement("Label");
-  let delayBtn = document.createElement("button");
-  let slideControlContainer = document.createElement("div");
 
-  heading.textContent = "Random Images";
-  slideControlContainer.classList.add("slideControls");
   previousSlideBtn.classList.add("left");
   nextSlideBtn.classList.add("right");
   nextSlideBtn.textContent = ">";
   previousSlideBtn.textContent = "<";
-  nextSlideBtnAuto.textContent = "Auto Right";
+  nextSlideBtnAuto.textContent = "auto->";
   stopAutoSlideBtn.textContent = "stop";
-  previousSlideBtnAuto.textContent = "Auto Left";
-  //   userTimerInput.placeholder = "";
-  userTimerInput.id = "userTimer";
-  userTimerLabel.setAttribute = ("for", "userTimer");
-  userTimerLabel.innerHTML = "Delay Timer <span>(in seconds):</span>";
-  delayBtn.textContent = "Set";
+  previousSlideBtnAuto.textContent = "<-auto";
 
-  slideControlContainer.appendChild(userTimerLabel);
-  slideControlContainer.appendChild(userTimerInput);
-  slideControlContainer.appendChild(delayBtn);
-  slideControlContainer.appendChild(previousSlideBtnAuto);
-  slideControlContainer.appendChild(stopAutoSlideBtn);
-  slideControlContainer.appendChild(nextSlideBtnAuto);
-
-  slideShowContainer.appendChild(slideControlContainer);
+  slideShowContainer.appendChild(previousSlideBtn);
+  slideShowContainer.appendChild(nextSlideBtn);
+  slideShowContainer.appendChild(previousSlideBtnAuto);
+  slideShowContainer.appendChild(stopAutoSlideBtn);
+  slideShowContainer.appendChild(nextSlideBtnAuto);
 
   let slideGallery = document.createElement("div");
-  slideGallery.classList.add("imageContainer");
+
   let img = document.createElement("img");
   img.src = images[activeSlideIndex];
 
-  slideGallery.appendChild(previousSlideBtn);
   slideGallery.appendChild(img);
-  slideGallery.appendChild(nextSlideBtn);
+
   slideShowContainer.appendChild(slideGallery);
-  slideShowContainer.appendChild(heading);
 
   //   EventListeners for buttons
   nextSlideBtn.addEventListener("click", slideForward);
@@ -133,5 +116,20 @@ function renderElements() {
   stopAutoSlideBtn.addEventListener("click", clearForwardTimer);
   delayBtn.addEventListener("click", getUserTimer);
 }
+function renderInput() {
+  let userControls = document.createElement("div");
 
+  let userTimerInput = document.createElement("input");
+  let userTimerLabel = document.createElement("Label");
+  let delayBtn = document.createElement("button");
+  userTimerInput.placeholder = "type in a number";
+  userTimerInput.id = "userTimer";
+  userTimerLabel.setAttribute = ("for", "userTimer");
+  userTimerLabel.innerText = "Set delay in seconds:";
+  delayBtn.textContent = "Enter";
+
+  slideShowContainer.appendChild(userTimerLabel);
+  slideShowContainer.appendChild(userTimerInput);
+  slideShowContainer.appendChild(delayBtn);
+}
 renderElements();
