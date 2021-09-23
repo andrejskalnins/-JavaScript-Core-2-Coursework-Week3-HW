@@ -1,1 +1,109 @@
 /** Write your CSS in here **/
+.imageContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.right {
+  position: absolute;
+  top: calc(50% - 1em);
+  right: 0;
+  background: #ffffff5e;
+  border: 0;
+  font-size: 2rem;
+  color: black;
+  padding: 1px 5px 10px 1px;
+  border-radius: 8%;
+}
+.left {
+  position: absolute;
+  top: calc(50% - 1em);
+  left: 0;
+  background: #ffffff5e;
+
+  border: 0;
+  font-size: 2rem;
+  color: black;
+  padding: 1px 5px 10px 1px;
+  border-radius: 8%;
+}
+.left:hover {
+  background-color: rgba(255, 192, 203, 0.698);
+  font-size: 4rem;
+}
+.right:hover {
+  background-color: rgba(255, 192, 203, 0.698);
+  font-size: 4rem;
+}
+.slideshow {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.slideshow > h1 {
+  margin-right: 18rem;
+  font-family: "Roboto Slab", serif;
+}
+.slideControls {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+.slideControls > label {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+}
+.slideControls > label > span {
+  font-size: 1rem;
+}
+.slideControls > input {
+  width: 2rem;
+
+  margin-left: 0.2rem;
+  /* border: 0.5px dotted black; */
+}
+
+.slideControls > button {
+  background-color: white;
+  margin: 0.5rem;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px;
+}
+.imageContainer > img {
+  border: 10px solid lightsteelblue;
+}
+
+@media only screen and (max-width: 600px) {
+  .slideshow > h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    padding: 1rem;
+  }
+  .imageContainer > img {
+    height: 290px;
+  }
+  .slideControls {
+    width: 300px;
+    text-align: center;
+  }
+  .slideControls > label {
+    font-size: 1rem;
+  }
+  .slideControls > label > span {
+    font-size: 0.5rem;
+  }
+  .slideControls > input {
+    width: 2rem;
+
+    margin-left: 0.2rem;
+    /* border: 0.5px dotted black; */
+  }
+  .slideControls > button {
+    background-color: white;
+    font-size: 0.8rem;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px;
+  }
+}

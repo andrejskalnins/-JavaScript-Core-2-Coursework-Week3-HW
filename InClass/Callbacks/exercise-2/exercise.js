@@ -61,8 +61,88 @@ const movies = [
   },
 ];
 
+//  Task 1
 // create showMovies function
+function showMovies() {
+  movies.forEach((movie, index) => {
+    setTimeout(() => {
+      let movieInfo = document.createElement("p");
+      let movieContainer = document.querySelector("#all-movies");
+      movieInfo.innerHTML = `${movie.title} by ${movie.director}`;
+      movieContainer.appendChild(movieInfo);
+
+      let movieTotal = document.querySelector("#movies-number");
+      movieTotal.innerText = (index % movies.length) + 1;
+    }, 2000 * index);
+  });
+}
+// setTimeout(showMovies, 1000);
 
 // create a new movie object for your favorite movie
-
+const myMovie = {
+  title: "Mystery Train",
+  director: "Jim Jarmuch",
+  type: "independent",
+  haveWatched: true,
+};
 // create addMovies function
+
+function addMovie(movie, renderMovie) {
+  setTimeout(() => {
+    movies.push(movie);
+    renderMovie(movies);
+  }, 2000);
+}
+addMovie(myMovie, showMovies);
+
+// add a film from the input form
+// function userMovie() {
+//   let movieForm = document.querySelector("form");
+//   movieForm.addEventListener("submit", (event) => {
+//     event.preventDefault();
+//     let newMovie = {};
+//     let title = document.querySelector("#movieTitle");
+//     newMovie.title = title.value;
+
+//     let directorName = document.querySelector("#directorName");
+//     newMovie.name = directorName.value;
+
+//     let genre = document.querySelector("#genre");
+//     newMovie.type = genre.value;
+
+//     let haveWatched = document.querySelector("#check");
+//     if (haveWatched.value === "yes") {
+//       return (newMovie.haveWatched = true);
+//     } else if (haveWatched.value === "no") {
+//       return (newMovie.haveWatched = false);
+//     }
+
+//     movies.push(newMovie);
+//     // [...movieForm.elements].forEach((input) => {
+//     //   let newMovie = {};
+//     //   console.log(input.value);
+//     // });
+//   });
+// }
+
+// const userMovie = (ev) => {
+//   ev.preventDefault(); //to stop the form submitting
+//   let movie = {
+//     id: Date.now(),
+//     title: document.getElementById("title").value,
+//     director: document.getElementById("yr").value,
+//   };
+//   movies.push(movie);
+//   document.forms[0].reset(); // to clear the form for the next entries
+//   //document.querySelector('form').reset();
+
+//   //for display purposes only
+//   console.warn("added", { movies });
+
+//   //saving to localStorage
+//   localStorage.setItem("MyMovieList", JSON.stringify(movies));
+// };
+// document.addEventListener("DOMContentLoaded", () => {
+//   document.getElementById("btn").addEventListener("click", userMovie);
+// });
+// addMovie(userMovie, showMovies);
