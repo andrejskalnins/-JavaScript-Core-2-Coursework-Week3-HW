@@ -490,3 +490,27 @@ const quotes = [
     author: "Zig Ziglar",
   },
 ];
+
+let newQuoteBtn = document.querySelector("#newQuote");
+let autoPlayStatus = document.querySelector(".controls p");
+newQuoteBtn.addEventListener("click", retrieveQuote);
+function retrieveQuote() {
+  let quoteDisplay = document.querySelector(".blockquote > h1");
+  let authorDisplay = document.querySelector(".blockquote > h4");
+  let randomQuote = pickFromArray(quotes);
+  quoteDisplay.textContent = randomQuote.quote;
+  authorDisplay.textContent = `-${randomQuote.author}`;
+}
+let checkBoxToggle = document.querySelector("#checkbox");
+checkBoxToggle.addEventListener("change", (e) => {
+  autoPlayStatus.innerText = "auto-play: ON";
+  let autoQuotes = setInterval(() => {
+    if (checkBoxToggle.checked) {
+      retrieveQuote();
+    } else {
+      clearInterval(autoQuotes);
+      autoPlayStatus.innerText = "auto-play: off";
+    }
+  }, 60000);
+});
+window.onload = retrieveQuote;
